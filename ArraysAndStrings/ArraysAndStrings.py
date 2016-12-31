@@ -202,5 +202,72 @@ def compressString(string1):
 
 def rotateMatrix(matrix):
 	#we know we have an nxn matrix
+	ret_matrix = [[None] * len(matrix) for i in range(len(matrix))]
+	for i in range(len(matrix)):
+		for j in range(len(matrix)):
+			pass
+
+
 
 test = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+
+rotateMatrix(test)
+
+#1.8 Zero matrix
+def zero_matrix(matrix):
+	#if an element of the matrix is 0, then that row/column become 0
+	#find all coordinates of 0 value
+	zero_list = []
+	counter = 0
+	for line in matrix:
+		for j in range(len(line)):
+			if line[j] == 0:
+				zero_list.append((j,counter))
+		counter += 1
+
+	for elem in zero_list:
+		#Clear rows
+		matrix[elem[1]] = [0 for i in range(len(matrix[elem[1]]))]
+		#Clear columns
+		for i in range(len(matrix)):
+			matrix[i][elem[0]] = 0
+	return matrix
+
+
+# test = [[1,2,3,4],[5,6,0,8],[9,10,11,12],[13,14,0,16]]
+# print("before")
+# for i in test:
+# 	print(i)
+# matrix = zero_matrix(test)
+# print("after")
+# for i in matrix:
+# 	print(i)
+
+#1.9 String rotation
+def is_rotation_of(string1, string2):
+	for m in re.finditer(testString1[0], testString2):
+		occur = m.span()[0]
+		compval = testString2[occur:] + testString2[:occur]
+		if compval == testString1:
+			return True
+	return False
+
+# testString1 = 'waterbottle'
+# testString2 = 'erbottlewat'
+
+# print(is_rotation_of(testString1,testString2))
+
+# testString1 = 'terbottlewa'
+# testString2 = 'erbottlewat'
+
+# print(is_rotation_of(testString1,testString2))
+
+# testString1 = 'qerbottlewa'
+# testString2 = 'erbottlewat'
+
+# print(is_rotation_of(testString1,testString2))
+
+# testString1 = 'terbottlewa'
+# testString2 = 'erbottleqwat'
+
+# print(is_rotation_of(testString1,testString2))
